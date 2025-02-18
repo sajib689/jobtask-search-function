@@ -7,13 +7,13 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState([]);
 
-  // Fetch Pokémon data from API
+
   useEffect(() => {
     const fetchPokemonData = async () => {
       try {
         const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
         setPokemonData(res.data.results);
-        setFilteredData(res.data.results);
+        setFilteredData(res.data.results);  
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -21,7 +21,6 @@ const App = () => {
     fetchPokemonData();
   }, []);
 
-  // Handle search input and filter results
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     const filtered = pokemonData.filter(pokemon =>
@@ -31,7 +30,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App container mx-auto">
       <h1 className="text-center text-4xl my-4">Pokémon List</h1>
       <input
         type="text"
